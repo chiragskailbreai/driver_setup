@@ -1,0 +1,22 @@
+
+def setup_driver(background_exe=0):
+    # Set up webdriver (chrome), automatically manage driver versions and install if required
+    # create Chrome options object
+    chrome_options = Options()
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+
+
+    user_data_dir = "/home/vithamas/.config/google-chrome/Profile 7"  # Update this path
+
+    # set headless option to run Chrome in the background
+    if (background_exe == 1):
+        chrome_options.add_argument('--headless')
+        print("Chrome is configured to run in background")
+    # Set Chrome options
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument(f"user-data-dir={user_data_dir}")
+
+    driver = webdriver.Chrome( options=chrome_options)#executable_path="/usr/local/bin/chromedriver",
+    return driver
+    
